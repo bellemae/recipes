@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Belle's Vegan Recipe Collection</h1>
+  <p>Welcome to my Vegan Recipe Book</p>
+  <h2>Dynamic content</h2>
+  <p>The Recipe Book has the following record counts:</p>
+  <ul>
+    <li><strong>Recipes:</strong> {{ num_recipes }}</li>
+    <li><strong>Ingredients:</strong> {{ num_ingredients }}</li>
+    <li><strong>Categories:</strong> {{ num_categories }}</li>
+
+  </ul>
+{% endblock %}
