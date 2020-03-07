@@ -69,10 +69,22 @@ class RecipeIngredient(models.Model):
 
 
 class RecipeStep(models.Model):
-    position = models.IntegerField()
+    position = models.IntegerField() # so each step is printed in order
     step = models.CharField(max_length=40, help_text='Enter the recipe step')
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         """String for representing the Model object."""
         return self.step
+
+    class Meta:
+        ordering = ['position']
+
+class RecipeImage(models.Model):
+    top_pic = models.BooleanField(default=False, help_text='Set if this is to be the top image')
+    image_path = models.CharField(max_length=40, help_text='Enter the image url')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=1)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.image_path

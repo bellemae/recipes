@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+{% static 'img' as base_url %}
+  <h1>{{ recipe.title}}</h1>
+
+  <h3>{{ recipe.description }}</h3>
+  <br />
+
+  <b>Ingredients</b>
+
+  {% for recipeingredient in recipe.recipeingredient_set.all %}
+  <ul>
+    <li>{{ recipeingredient }}</li>
+  </ul>
+  {% endfor %}
+
+  <br />
+  <b>Method</b>
+  <br />
+
+  {% for recipestep in recipe.recipestep_set.all %}
+    {{ recipestep.position }}.  {{ recipestep }}<br />
+  {% endfor %}
+  
+  {% for recipeimage in recipe.recipeimage_set.all %}
+     <img itemprop="image" src="{{base_url}}/{{recipeimage}}" />
+  {% endfor %}
+
+{% endblock %}

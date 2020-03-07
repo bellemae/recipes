@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from catalog.models import Recipe, Ingredient, Category
+from catalog.models import Recipe, Ingredient, Category, RecipeIngredient
+from django.views import generic
 
 # Create your views here.
 
@@ -20,3 +21,13 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+class RecipeListView(generic.ListView):
+    model = Recipe
+    paginate_by = 10
+
+class RecipeDetailView(generic.DetailView):
+    model = Recipe
+
+    
